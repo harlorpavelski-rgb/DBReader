@@ -1,7 +1,7 @@
 # DBReader
 豆瓣帖子留存
 
-
+本工具展示效果： https://harlorpavelski-rgb.github.io/DBReader/
 
 本工具需要下载python与pycharm
 
