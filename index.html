@@ -552,6 +552,7 @@
                     toggleBtn.innerText = '☀️';
                 } else {
                     if (currentReadingPost) {
+                        // 唤出侧边栏时，直接以目前点选的那个标签分类来进行智能高亮初始化
                         switchDrawerTabOnly(currentOpenedFromTab);
                     }
                     drawer.classList.add('open');
@@ -569,7 +570,6 @@
             document.getElementById('html-prev-btn').onclick = () => { if (currentHtmlPageIndex > 0) jumpToHtmlPage(currentHtmlPageIndex - 1); };
             document.getElementById('html-next-btn').onclick = () => { if (currentHtmlPageIndex < activePostPages.length - 1) jumpToHtmlPage(currentHtmlPageIndex + 1); };
 
-            // 绑定左上角纯文本返回动作
             document.getElementById('html-raw-back-btn').onclick = () => { closeArticleViewer(); };
 
             document.getElementById('catalog-help-btn').onclick = openHelpModal;
@@ -686,11 +686,23 @@
                 const row = document.createElement('div');
                 row.className = 'list-row';
 
-                // 主页面或侧边栏，只要文章名匹配且标签一致，就高亮
-                if (currentReadingPost && currentReadingPost.title === post.title) {
+                // 【全新双向深度高亮判断逻辑】：
+                if (currentReadingPost && currentReadingPost === post) {
                     const activeTabId = isDrawer ? 'drawer-tab-bar' : 'tab-filter-bar';
-                    if (getCurrentlyActiveCategory(activeTabId) === currentOpenedFromTab) {
+                    const currentActiveCat = getCurrentlyActiveCategory(activeTabId);
+
+                    // 1. 如果切到了“全部”标签，无条件点亮
+                    if (currentActiveCat === 'all') {
                         row.classList.add('active-reading');
+                    } else {
+                        // 2. 如果切到了具体分类，查找该博文是否属于这个具体分类，如果是也自动点亮
+                        const belongsToCurrentCat = thispost.some(catObj =>
+                            catObj.category === currentActiveCat &&
+                            catObj.posts.includes(currentReadingPost)
+                        );
+                        if (belongsToCurrentCat) {
+                            row.classList.add('active-reading');
+                        }
                     }
                 }
 
@@ -739,10 +751,8 @@
             document.getElementById('article-viewer-overlay').style.display = 'none';
             document.getElementById('viewer-iframe').src = 'about:blank';
 
-            // 关键：返回时让主页目录强制与其点进前的过滤分类标签保持完全同步，并在列表中高亮记忆该博文行
             switchActiveTabGlobal(currentOpenedFromTab);
 
-            // 自动将视图平滑滚动到刚才正在看的那一行
             setTimeout(() => {
                 const targetRow = document.querySelector('#list-container .list-row.active-reading');
                 if (targetRow) {
@@ -996,8 +1006,6 @@
                     el.classList.remove('immersive-hide');
                 }
             });
-
-            // 已移除了在沉浸清屏模式下隐藏 iframe 内部 injected-bottom-tip 提示的错误逻辑
         }
 
         window.onload = init;
