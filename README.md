@@ -6,7 +6,7 @@
 本工具需要下载python与pycharm
 
 
-需要使用本阅读器的媎妹先fork莴苣媎妹的帖子爬取工具的仓 forkhttps://github.com/Hua27-Hua/douban-group-archive-tool 并拉取代码到本地
+需要使用本阅读器的媎妹先fork莴苣媎妹的帖子爬取工具的仓 https://github.com/Hua27-Hua/douban-group-archive-tool 并拉取代码到本地
 
 
 fork本仓后把代码拉到本地仓中，将本仓export_single_html.py文件里的内容全选复制后 将 帖子爬取工具内的 同名文件export_single_html.py 里的内容全部替换（能记得文件层级的媎妹也可以直接替换文件）后在使用帖子爬取工具
