@@ -7,12 +7,14 @@
 
 2026\6\23 新增txt\docx\md文件读取阅读功能，txt\docx文件放在根目录则分类在'其他'，放在标签文件夹下，则分类在该标签中
  md文件以这个结构放置则在post标签下
+```
 📦 project-root
 ├── 📄 index.html
 ├── 📂 posts
 │   ├── 📄 article.md
 │   └── 📂 images
 │       └── 📷 photo.png
+```
 图片文件路径请写
 
 images/photo.png
