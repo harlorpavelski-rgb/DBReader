@@ -5,7 +5,18 @@
 
 本仓可作展示位想要发声的媎妹可以把自己的网页用issu提给我或把想法的内容整理成 txt\docx\md文件放在issu提给我，我代发在老地址
 
-2026\6\23 新增txt\docx\md文件读取阅读功能，文件放在根目录则分类在'其他'，放在标签文件夹下，则分类在该标签中
+2026\6\23 新增txt\docx\md文件读取阅读功能，txt\docx文件放在根目录则分类在'其他'，放在标签文件夹下，则分类在该标签中
+ md文件以这个结构放置则在post标签下
+📦 project-root
+├── 📄 index.html
+├── 📂 posts
+│   ├── 📄 article.md
+│   └── 📂 images
+│       └── 📷 photo.png
+图片文件路径请写
+![描述文字](images/photo.png)
+
+![描述文字](./images/photo.png)
 
 本工具需要下载python与pycharm
 
