@@ -15,11 +15,9 @@
 │   └── 📂 images
 │       └── 📷 photo.png
 ```
-图片文件路径请写
+图片文件路径请写images/photo.png或./images/photo.png
 
-images/photo.png
-或
-./images/photo.png
+如果对于该博文有补充的想法可以把txt\docx\md文件直接放博文下会以博文(文件格式)命名显示在阅读器目录
 
 本工具需要下载python与pycharm
 
