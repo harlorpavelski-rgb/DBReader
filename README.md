@@ -14,9 +14,10 @@
 │   └── 📂 images
 │       └── 📷 photo.png
 图片文件路径请写
-![描述文字](images/photo.png)
 
-![描述文字](./images/photo.png)
+images/photo.png
+或
+./images/photo.png
 
 本工具需要下载python与pycharm
 
